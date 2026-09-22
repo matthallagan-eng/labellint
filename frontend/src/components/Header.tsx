@@ -5,15 +5,14 @@ interface Props {
 
 export default function Header({ view, onChange }: Props) {
   return (
-    <header className="border-b border-border bg-surface">
+    <header className="border-b border-border bg-accent">
       <div className="mx-auto flex max-w-4xl flex-col gap-6 px-6 py-8">
         <div>
-          <h1 className="text-2xl font-semibold text-ink">LabelLint</h1>
-          <p className="mt-1 text-sm text-ink-soft">
-            Find the problems in your dataset before you spend a GPU day on it.
+          <h1 className="text-2xl font-semibold text-white">LabelLint</h1>
+          <p className="mt-1 text-sm text-white/70">
+            Find the problems in your dataset before you it causes issues down the line!
           </p>
         </div>
-
         <div
           className="inline-flex w-fit rounded-lg border border-border bg-surface-sunken p-1"
           role="tablist"
