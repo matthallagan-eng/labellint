@@ -97,3 +97,17 @@ def get_status(job_id: str):
         "result": job.result,
         "error": job.error,
     }
+
+
+@router.post("/demo")
+def analyze_demo(background: BackgroundTasks):
+    demo = Path(__file__).parent.parent / "static" / "demo_dataset.zip"
+    if not demo.exists():
+        raise HTTPException(500, "Demo dataset not found")
+
+    work = Path(tempfile.mkdtemp(prefix="labellint_demo_"))
+    shutil.copy(demo, work / "upload.zip")
+
+    job = store.create()
+    background.add_task(_process, job.id, work / "upload.zip", work)
+    return {"job_id": job.id}

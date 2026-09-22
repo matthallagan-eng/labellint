@@ -1,25 +1,32 @@
 import type { Severity } from "../types";
 
-const CONFIG: Record<Severity, { label: string; text: string; bg: string; dot: string }> = {
+const CONFIG: Record<Severity, { label: string; text: string; bg: string; dot: string; border: string }> = {
   error: {
     label: "Error",
     text: "text-error",
     bg: "bg-error-soft",
     dot: "bg-error",
+    border: "border-l-error",
   },
   warning: {
     label: "Warning",
     text: "text-warn",
     bg: "bg-warn-soft",
     dot: "bg-warn",
+    border: "border-l-warn",
   },
   info: {
     label: "Note",
     text: "text-note",
     bg: "bg-note-soft",
     dot: "bg-note",
+    border: "border-l-note",
   },
 };
+
+export function severityConfig(severity: Severity) {
+  return CONFIG[severity];
+}
 
 export default function SeverityBadge({ severity }: { severity: Severity }) {
   const c = CONFIG[severity];
